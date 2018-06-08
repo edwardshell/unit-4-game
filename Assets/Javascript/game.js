@@ -25,34 +25,47 @@ $(document).ready(function () {
     $("#crystal3").val(hiddenValue3);
     $("#crystal4").val(hiddenValue4);
 
-    function reset() {
-        targetNumber = Math.floor(Math.random() * 101) + 19;
-        hiddenValue1 = Math.floor(Math.random() * 12) + 1;
-        hiddenValue2 = Math.floor(Math.random() * 12) + 1;
-        hiddenValue3 = Math.floor(Math.random() * 12) + 1;
-        hiddenValue4 = Math.floor(Math.random() * 12) + 1;
-    }
+
 
     $(".image").on("click", function () {
         var number = $(this).val();
         var num = parseInt(number);
 
+        function reset() {
 
+           
+
+            targetNumber = Math.floor(Math.random() * 101) + 19;
+            hiddenValue1 = Math.floor(Math.random() * 12) + 1;
+            hiddenValue2 = Math.floor(Math.random() * 12) + 1;
+            hiddenValue3 = Math.floor(Math.random() * 12) + 1;
+            hiddenValue4 = Math.floor(Math.random() * 12) + 1;
+            $("#number-match-box").text(targetNumber);
+            $("#crystal1").val(hiddenValue1);
+            $("#crystal2").val(hiddenValue2);
+            $("#crystal3").val(hiddenValue3);
+            $("#crystal4").val(hiddenValue4);
+        
+            console.log(hiddenValue1, hiddenValue2, hiddenValue3, hiddenValue4);
+        }
 
 
         $("#score").text(score += num);
 
         if (score > targetNumber) {
+            reset();
             losses++;
             console.log("loss");
+            
             return score = 0;
-            // reset();
+
             // return targetNumber = Math.floor(Math.random() * 101) + 19;
         }
 
 
 
         if (score === targetNumber) {
+            reset();
             wins++;
             console.log("win");
             return score = 0;
@@ -63,7 +76,7 @@ $(document).ready(function () {
             "<p>Losses: " + losses + "</p>";
 
         document.querySelector("#win-tracker").innerHTML = html;
-       
+
 
     })
 
